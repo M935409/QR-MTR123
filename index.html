@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مولد الباركود QR</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #3b3232; }
+        .container { max-width: 350px; margin: 50px auto; padding: 20px; background: rgb(255, 255, 255); border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        input { width: 90%; padding: 10px; margin: 10px; border: 1px solid #ccc; border-radius: 5px; }
+        button { padding: 10px 20px; background: #28a745; color: rgb(255, 255, 255); border: none; cursor: pointer; border-radius: 5px; }
+        button:hover { background: #218838; }
+        #qrcode { margin: 20px auto; display: flex; justify-content: center; align-items: center; height: auto; }
+        .logo { width: 100px; height: auto; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container"> 
+     <h2>Muhab :👩‍💻 تصميم <h2>
+        <img src="c:\Users\USER\Desktop\خلفيات\IMG-9901.jpeg" alt="شعار الموقع" class="logo">
+        <h2> Made in Sudan(¬‿¬)</h2>
+        <h2>مولد الباركود QR</h2>
+        <input type="text" id="barcodeText" placeholder="أدخل النص أو الرابط">
+        <button onclick="generateQRCode()">إنشاء باركود</button>
+        <div id="qrcode"></div> 
+        <button onclick="downloadQRCode()">تحميل الباركود</button>
+    </div>
+    
+    <script>
+        var qr;
+        function generateQRCode() {
+            var input = document.getElementById("barcodeText").value;
+            var qrDiv = document.getElementById("qrcode");
+            qrDiv.innerHTML = ""; 
+            if (input.trim() === "") {
+                alert("يرجى إدخال نص لإنشاء الباركود");
+                return;
+            }
+            if (qr) qr.clear();
+            qr = new QRCode(qrDiv, {
+                text: input,
+                width: 256,
+                height: 256,
+                correctLevel: QRCode.CorrectLevel.L
+            });
+        }
+        
+        function downloadQRCode() {
+            var qrCanvas = document.querySelector("#qrcode img");
+            if (!qrCanvas) {
+                alert("يرجى إنشاء الباركود أولاً");
+                return;
+            }
+            var link = document.createElement("a");
+            link.download = "qrcode.png";
+            link.href = qrCanvas.src;
+            link.click();
+        }
+    </script>
+</body>
+</html>
