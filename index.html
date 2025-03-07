@@ -40,8 +40,8 @@
             if (qr) qr.clear();
             qr = new QRCode(qrDiv, {
                 text: input,
-                width: 256,
-                height: 256,
+                width: 200, // جعل الحجم أصغر لتحسين تناسبه
+                height: 200,
                 correctLevel: QRCode.CorrectLevel.L
             });
         }
@@ -52,9 +52,27 @@
                 alert("يرجى إنشاء الباركود أولاً");
                 return;
             }
+
+            var padding = 30; // إضافة مساحات بيضاء حول الباركود
+            var newSize = 200; // حجم الباركود الفعلي
+            var finalSize = newSize + padding * 2; // الحجم الكلي مع المساحات البيضاء
+
+            var canvas = document.createElement("canvas");
+            var context = canvas.getContext("2d");
+
+            canvas.width = finalSize;
+            canvas.height = finalSize;
+
+            // جعل الخلفية بيضاء
+            context.fillStyle = "#ffffff";
+            context.fillRect(0, 0, finalSize, finalSize);
+
+            // رسم الباركود في المنتصف مع المساحات البيضاء
+            context.drawImage(qrCanvas, padding, padding, newSize, newSize);
+
             var link = document.createElement("a");
             link.download = "qrcode.png";
-            link.href = qrCanvas.toDataURL("image/png");
+            link.href = canvas.toDataURL("image/png");
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
