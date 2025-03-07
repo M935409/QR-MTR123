@@ -6,10 +6,10 @@
     <title>مولد الباركود QR</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; background-color: #3b3232; }
-        .container { max-width: 350px; margin: 50px auto; padding: 20px; background: rgb(255, 255, 255); border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #3b3232; color: white; }
+        .container { max-width: 350px; margin: 50px auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); color: black; }
         input { width: 90%; padding: 10px; margin: 10px; border: 1px solid #ccc; border-radius: 5px; }
-        button { padding: 10px 20px; background: #28a745; color: rgb(255, 255, 255); border: none; cursor: pointer; border-radius: 5px; }
+        button { padding: 10px 20px; background: #28a745; color: white; border: none; cursor: pointer; border-radius: 5px; }
         button:hover { background: #218838; }
         #qrcode { margin: 20px auto; display: flex; justify-content: center; align-items: center; height: auto; }
         .logo { width: 100px; height: auto; margin-bottom: 10px; }
@@ -17,9 +17,9 @@
 </head>
 <body>
     <div class="container"> 
-     <h2>Muhab :👩‍💻 تصميم <h2>
+        <h2>Muhab :👩‍💻 تصميم </h2>
         <img src="IMG-9901.jpeg" alt="شعار الموقع" class="logo">
-        <h2> Made in Sudan(¬‿¬)</h2>
+        <h2> Made in Sudan (¬‿¬) </h2>
         <h2>مولد الباركود QR</h2>
         <input type="text" id="barcodeText" placeholder="أدخل النص أو الرابط">
         <button onclick="generateQRCode()">إنشاء باركود</button>
@@ -47,15 +47,17 @@
         }
         
         function downloadQRCode() {
-            var qrCanvas = document.querySelector("#qrcode img");
+            var qrCanvas = document.querySelector("#qrcode canvas");
             if (!qrCanvas) {
                 alert("يرجى إنشاء الباركود أولاً");
                 return;
             }
             var link = document.createElement("a");
             link.download = "qrcode.png";
-            link.href = qrCanvas.src;
+            link.href = qrCanvas.toDataURL("image/png");
+            document.body.appendChild(link);
             link.click();
+            document.body.removeChild(link);
         }
     </script>
 </body>
