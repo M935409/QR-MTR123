@@ -13,10 +13,26 @@
         button:hover { background: #218838; }
         #qrcode { margin: 20px auto; display: flex; justify-content: center; align-items: center; height: auto; }
         .logo { width: 100px; height: auto; margin-bottom: 10px; }
-        .signature { margin-top: 20px; font-size: 16px; color: #28a745; font-weight: bold; }
+        .signature { margin-top: 20px; font-size: 16px; color: #28a745; font-weight: bold; 
+            animation: wave 2s infinite; /* إضافة تأثير متموج */
+        }
+        @keyframes wave {
+            0% { opacity: 0; transform: translateY(20px); }
+            50% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-20px); }
+        }
         .link-section { margin-top: 20px; font-size: 16px; color: #28a745; }
-        .link-section a { color: #28a745; text-decoration: none; font-weight: bold; }
+        .link-section a { 
+            color: blue; /* اللون الأزرق */
+            text-decoration: none; 
+            font-weight: bold; 
+            font-size: 24px; /* خط أكبر وأعرض */
+        }
         .link-section a:hover { text-decoration: underline; }
+        .link-section p {
+            color: #28a745; /* اللون الأخضر القديم للنص */
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
@@ -27,10 +43,10 @@
         <button onclick="generateQRCode()">إنشاء باركود</button>
         <div id="qrcode"></div> 
         <button onclick="downloadQRCode()">تحميل الباركود</button>
-        <div class="signature">Muhab : تصميم</div> <!-- توقيع هنا -->
+        <div class="signature">Muhab Tarig : تصميم</div> <!-- توقيع هنا -->
         <div class="link-section">
-            <p>:لقراءه الكود الذي صنعته توجهة الى هذه الصفحة</p>
-            <a href=" https://m935409.github.io/reding-QR/" target="_blank">اضغط هنا لزيارة الصفحة</a>
+            <p>:لقراءة الكود الذي صنعته توجه إلى هذه الصفحة</p>
+            <a href="https://m935409.github.io/reding-QR/" target="_blank">اضغط هنا لزيارة الصفحة</a>
         </div>
     </div>
     
