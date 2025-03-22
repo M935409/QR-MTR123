@@ -6,14 +6,70 @@
     <title>مولد الباركود QR</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; background-color: #3b3232; color: white; }
-        .container { max-width: 350px; margin: 50px auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); color: black; }
-        input { width: 90%; padding: 10px; margin: 10px; border: 1px solid #ccc; border-radius: 5px; }
-        button { padding: 10px 20px; background: #28a745; color: white; border: none; cursor: pointer; border-radius: 5px; }
-        button:hover { background: #218838; }
-        #qrcode { margin: 20px auto; display: flex; justify-content: center; align-items: center; height: auto; }
-        .logo { width: 100px; height: auto; margin-bottom: 10px; }
-        .signature { margin-top: 20px; font-size: 16px; color: #28a745; font-weight: bold; 
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            background-image: url('IMG-9901.jpeg'); /* هنا يتم تحديد مسار الصورة */
+            background-size: cover; /* لتغطية الشاشة بالكامل بالصورة */
+            background-position: center center; /* لضبط الصورة في منتصف الصفحة */
+            color: white; 
+        }
+        .container { 
+            max-width: 350px; 
+            margin: 50px auto; 
+            padding: 20px; 
+            background: white; 
+            border-radius: 10px; 
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+            color: black; 
+            opacity: 0.9; /* إضافة الشفافية */
+        }
+        input { 
+            width: 90%; 
+            padding: 12px; /* زيادة الحجم لجعل الصندوق أكبر */
+            margin: 10px; 
+            border: 2px solid #ccc; /* جعل الحدود أكثر سمكًا */
+            border-radius: 8px; /* تحديد الحواف بشكل انسيابي */
+            background-color: #f9f9f9; /* خلفية فاتحة للصندوق */
+            font-size: 16px; /* زيادة حجم الخط */
+            transition: all 0.3s ease; /* إضافة تأثيرات انتقاليه للتركيز */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* إضافة ظل خفيف */
+        }
+
+        input:focus {
+            border-color: #28a745; /* تغيير اللون عند التركيز */
+            background-color: #fff; /* تغيير الخلفية عند التركيز */
+            box-shadow: 0 0 10px rgba(40, 167, 69, 0.5); /* إضافة تأثير ظل عند التركيز */
+        }
+        
+        button { 
+            padding: 10px 20px; 
+            background: #28a745; 
+            color: white; 
+            border: none; 
+            cursor: pointer; 
+            border-radius: 5px; 
+        }
+        button:hover { 
+            background: #218838; 
+        }
+        #qrcode { 
+            margin: 20px auto; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: auto; 
+        }
+        .logo { 
+            width: 100px; 
+            height: auto; 
+            margin-bottom: 10px; 
+        }
+        .signature { 
+            margin-top: 20px; 
+            font-size: 16px; 
+            color: #28a745; 
+            font-weight: bold; 
             animation: wave 2s infinite; /* إضافة تأثير متموج */
         }
         @keyframes wave {
@@ -21,14 +77,20 @@
             50% { opacity: 1; transform: translateY(0); }
             100% { opacity: 0; transform: translateY(-20px); }
         }
-        .link-section { margin-top: 20px; font-size: 16px; color: #28a745; }
+        .link-section { 
+            margin-top: 20px; 
+            font-size: 16px; 
+            color: #28a745; 
+        }
         .link-section a { 
             color: blue; /* اللون الأزرق */
             text-decoration: none; 
             font-weight: bold; 
             font-size: 24px; /* خط أكبر وأعرض */
         }
-        .link-section a:hover { text-decoration: underline; }
+        .link-section a:hover { 
+            text-decoration: underline; 
+        }
         .link-section p {
             color: #28a745; /* اللون الأخضر القديم للنص */
             font-size: 16px;
@@ -45,10 +107,33 @@
         <button onclick="downloadQRCode()">تحميل الباركود</button>
         <div class="signature">Muhab Tarig : تصميم</div> <!-- توقيع هنا -->
         <div class="link-section">
-            <p>:لقراءة الكود الذي صنعته توجه إلى هذه الصفحة</p>
-            <a href="https://m935409.github.io/reding-QR/" target="_blank">اضغط هنا لزيارة الصفحة</a>
-        </div>
-    </div>
+            <!DOCTYPE html>
+            <html lang="ar">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>تحريك السهم</title>
+                <style>
+                    @keyframes moveArrow {
+                        0% { transform: translateY(0); }
+                        50% { transform: translateY(10px); }
+                        100% { transform: translateY(0); }
+                    }
+                    .animated-arrow {
+                        display: inline-block;
+                        animation: moveArrow 1s infinite;
+                    }
+                </style>
+            </head>
+            <body>
+            
+                <p>لقراءة الكود الذي صنعته توجه إلى هذه الصفحة</p>
+                <p><span class="animated-arrow">👇</span></p>
+                <a href="https://m935409.github.io/reding-QR/" target="_blank">اضغط هنا لزيارة الصفحة</a>
+            
+            </body>
+            </html>
+            
     
     <script>
         var qr;
